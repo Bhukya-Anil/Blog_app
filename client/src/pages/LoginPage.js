@@ -9,15 +9,15 @@ export default function LoginPage() {
   const { setUserInfo } = useContext(UserContext);
   async function login(ev) {
     ev.preventDefault();
+    console.log(process.env.REACT_APP_API_URL);
     try {
-      const response = await fetch("http://localhost:4000/login", {
-        method: "POST",
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
+        method: `POST`,
         body: JSON.stringify({ username, password }),
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
+        headers: { "Content-Type": "application/json" }
       });
       if (!username || !password) {
-        alert("Please enter all the fields");
+        alert(`Please enter all the fields`);
       } else if (response.ok) {
         response.json().then((userInfo) => {
           setUserInfo(userInfo);
@@ -25,7 +25,7 @@ export default function LoginPage() {
         });
       } else {
         const errorData = await response.json();
-        throw new Error(errorData.message || "Wrong Credentials");
+        throw new Error(errorData.message || `Wrong Credentials`);
       }
     } catch (err) {
       alert(err.message);
@@ -33,7 +33,7 @@ export default function LoginPage() {
   }
 
   if (redirect) {
-    return <Navigate to={"/"} />;
+    return <Navigate to={`/`} />;
   }
   return (
     <form className="login" onSubmit={login}>

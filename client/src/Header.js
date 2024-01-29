@@ -2,12 +2,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { UserContext } from "./UserContext";
 
+
 export default function Header() {
   const { setUserInfo, userInfo } = useContext(UserContext);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:4000/profile", {
-      credentials: "include",
+    fetch(`${process.env.REACT_APP_API_URL}/profile`, {
     }).then((response) => {
       response.json().then((userInfo) => {
         setUserInfo(userInfo);
@@ -16,8 +16,7 @@ export default function Header() {
   }, []);
 
   function logout() {
-    fetch("http://localhost:4000/logout", {
-      credentials: "include",
+    fetch(`${process.env.REACT_APP_API_URL}/logout`, {
       method: "POST",
     });
     setUserInfo(null);

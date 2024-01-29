@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# Blog_app
-=======
 # MERN Blog Project
 
 Welcome to the MERN Blog Project! This project is built using the MERN stack (MongoDB, Express, React, and Node.js) and aims to provide a basic foundation for creating and managing blog posts.
@@ -72,4 +69,3 @@ To run the MERN Blog Project locally, follow these steps:
 - **public**: Contains static assets for the client.
 - **src**: Contains React components and application logic.
 - **uploads**: Contains images that are posted in the Blog. Create uploads folder before running project if it doesn't exist in api/ path.
->>>>>>> 30c4ed0 (FirstCommit)
